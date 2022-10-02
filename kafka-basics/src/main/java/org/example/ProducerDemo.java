@@ -23,7 +23,7 @@ public class ProducerDemo {
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
         //create the producer
-        KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
+        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
         //create a producer record
         ProducerRecord<String, String> producerRecord = new ProducerRecord<>("demo_java", "testing kafka");
@@ -36,19 +36,4 @@ public class ProducerDemo {
         producer.close();
 
     }
-
-    /*
-        download kafka: https://kafka.apache.org/downloads
-
-        go to the downloaded folder:
-        zookeeper-server-start.bat ..\..\config\zookeeper.properties
-
-        kafka-server-start.bat ..\..\config\server.properties
-
-        kafka-topics.bat --bootstrap-server 127.0.0.1:9092 --create --topic demo_java --partitions 3 --replication-factor 1
-
-        kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --topic demo_java
-
-     */
-
 }
